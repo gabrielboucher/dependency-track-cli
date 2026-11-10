@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Cross-compiles dtrack for Linux and Windows (amd64, arm64) into ./dist and writes checksums.txt.
-# darwin targets omitted until macOS CI is green (see .github/workflows/ci.yaml).
+# Cross-compiles dtrack for Linux, macOS (darwin), and Windows (amd64, arm64) into ./dist and writes checksums.txt.
+# darwin binaries are CGO_ENABLED=0 cross-compiles on Linux (no macOS runner required for releases).
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
@@ -51,9 +51,8 @@ while IFS=, read -r pkg_path _ lic; do
   done < <(find "${mod_dir}" -maxdepth 1 -type f \( -iname 'NOTICE' -o -iname 'NOTICE.txt' \) -print0)
 done < <(tail -n +1 "${license_stage}/report.csv")
 
-# linux/amd64 linux/arm64 windows/amd64 windows/arm64
-# darwin/amd64 darwin/arm64 — only after a green macOS CI run
-targets="linux/amd64 linux/arm64 windows/amd64 windows/arm64"
+# linux/amd64 linux/arm64 darwin/amd64 darwin/arm64 windows/amd64 windows/arm64
+targets="linux/amd64 linux/arm64 darwin/amd64 darwin/arm64 windows/amd64 windows/arm64"
 for t in $targets; do
   os="${t%/*}"
   arch="${t#*/}"

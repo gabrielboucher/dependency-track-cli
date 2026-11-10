@@ -10,8 +10,7 @@ permissions:
 
 jobs:
   test:
-    # macOS runners not being scheduled; non-blocking per maintainer decision;
-    # no darwin release binaries until a macOS run is green.
+    # macOS runners may not schedule; job is non-blocking. Release darwin binaries are cross-compiled on ubuntu (see scripts/build-release.sh).
     continue-on-error: ${{ matrix.os == 'macos-14' }}
     timeout-minutes: 20
     strategy:
