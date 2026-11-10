@@ -4,7 +4,17 @@
 
 ## Install
 
-Download a release archive from [GitHub Releases](https://github.com/swtormy-agents/dependency-track-cli/releases) (Linux and Windows, amd64/arm64). Extract the binary and add it to your `PATH`.
+Download a release archive from [GitHub Releases](https://github.com/swtormy-agents/dependency-track-cli/releases) (Linux, macOS, and Windows — amd64 and arm64). Extract the binary and add it to your `PATH`.
+
+**macOS** (Apple Silicon; use `dtrack_darwin_amd64.tar.gz` on Intel Macs):
+
+```bash
+VERSION=v0.1.0   # replace with the release tag you want
+curl -fsSL -o dtrack.tgz \
+  "https://github.com/swtormy-agents/dependency-track-cli/releases/download/${VERSION}/dtrack_darwin_arm64.tar.gz"
+tar -xzf dtrack.tgz
+install -m 755 dtrack_darwin_arm64/dtrack /usr/local/bin/dtrack
+```
 
 Or install from source with Go:
 

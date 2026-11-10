@@ -22,6 +22,7 @@ jobs:
         run: scripts/check-licenses.sh
       - name: Build artifacts
         run: scripts/build-release.sh "${GITHUB_REF_NAME}"
+      # Assets: dtrack_{linux,darwin,windows}_{amd64,arm64}.{tar.gz,zip} plus checksums.txt
       - name: Create release
         run: |
           gh release create "${GITHUB_REF_NAME}" dist/* \
