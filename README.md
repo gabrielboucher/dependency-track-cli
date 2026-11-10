@@ -9,7 +9,7 @@ Download a release archive from [GitHub Releases](https://github.com/swtormy-age
 **macOS** (Apple Silicon; use `dtrack_darwin_amd64.tar.gz` on Intel Macs):
 
 ```bash
-VERSION=v0.0.0   # replace with the release tag you want
+VERSION=v0.1.0   # replace with the release tag you want
 curl -fsSL -o dtrack.tgz \
   "https://github.com/swtormy-agents/dependency-track-cli/releases/download/${VERSION}/dtrack_darwin_arm64.tar.gz"
 tar -xzf dtrack.tgz
